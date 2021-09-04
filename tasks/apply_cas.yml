@@ -1,0 +1,11 @@
+- name: Create CAS config file
+  template:
+          src: ../templates/cas.conf.j2
+          dest: "{{ apache_config_directory }} / {{ cas_config_file }}"
+
+- name: Include CAS config file in Apache server config
+  lineinfile:
+          path: "{{ apache_config_directory }} / {{ apache_config_file }}"
+          line: "Include {{ cas_config_file }}"
+          state: present
+          backup: yes 

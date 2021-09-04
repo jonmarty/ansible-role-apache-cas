@@ -1,0 +1,21 @@
+- name: Installing mod_auth_cas dependencies
+  include: cas_dependencies.yml
+
+- name: Download mod_auth_cas from GitHub
+  git:
+          repo: 'https://github.com/apereo/mod_auth_cas'
+          dest: /src/mod_auth_cas
+  environment:
+          GIT_TERMINAL_PROMPT: 0
+
+- name: Go to the folder mod_auth_cas was installed in
+  command: chdir=/src/mod_auth_cas
+
+- name: Configure mod_auth_cas directory
+  shell: ./configure
+
+- name: Make mod_auth_cas directory
+  shell: make
+
+- name: Install mod_auth_cas directory
+  shell: make install

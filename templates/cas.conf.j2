@@ -1,0 +1,10 @@
+LoadModule auth_cas_module /usr/lib/apache2/modules/mod_auth_cas.so
+
+CASCookiePath {{ cas_cookie_path }}
+CASLoginURL {{ cas_login_url }}
+CASValidateURL {{ cas_validate_url }}
+
+<Location {{ cas_location }}>
+AuthType CAS
+Require valid-user
+</Location>
