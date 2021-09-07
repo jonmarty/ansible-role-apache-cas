@@ -13,12 +13,12 @@
           name: libaprutil1-dev
           state: present
 
-- name: Installing SSL libraries
+- name: Install SSL libraries
   apt:
           name: libssl-dev
           state: present
 
-- name: Installing CURL libraries (using SSL as a backend)
+- name: Install CURL libraries (using SSL as a backend)
   apt:
           name: libcurl4-openssl-dev
           state: present
