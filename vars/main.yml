@@ -1,4 +1,3 @@
----
 cas_cookie_path: "/tmp/"
 cas_login_url: "https://cas.columbia.edu/cas/login"
 cas_validate_url: "https://cas.columbia.edu/cas/p3/serviceValidate"
