@@ -1,11 +1,29 @@
+- name: Create CAS cookie cache
+  file:
+          path: "{{ cas_cookie_path }}"
+          state: directory
+          owner: www-data
+          group: www-data
+          mode: 0755
+          recurse: yes
+
+- name: Create CAS config directory
+  file:
+          path: "{{ cas_config_directory }}"
+          state: directory
+          owner: www-data
+          group: www-data
+          mode: 0755
+          recurse: yes
+
 - name: Create CAS config file
   template:
           src: ../templates/cas.conf.j2
-          dest: "{{ apache_config_directory }} / {{ cas_config_file }}"
+          dest: "{{ cas_config_directory }}/{{ cas_config_file }}"
 
 - name: Include CAS config file in Apache server config
   lineinfile:
-          path: "{{ apache_config_directory }} / {{ apache_config_file }}"
-          line: "Include {{ cas_config_file }}"
+          path: "{{ apache_config_directory }}/{{ apache_config_file }}"
+          line: "Include {{ cas_config_directory}}/{{cas_config_file }}"
           state: present
           backup: yes 

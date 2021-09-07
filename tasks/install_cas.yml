@@ -5,17 +5,18 @@
   git:
           repo: 'https://github.com/apereo/mod_auth_cas'
           dest: /src/mod_auth_cas
+          force: yes
   environment:
           GIT_TERMINAL_PROMPT: 0
 
-- name: Go to the folder mod_auth_cas was installed in
-  command: chdir=/src/mod_auth_cas
+- name: Check if mod_auth_cas needs to be bootstrapped
+  shell: chdir=/src/mod_auth_cas autoreconf -ivf
 
 - name: Configure mod_auth_cas directory
-  shell: ./configure
+  shell: chdir=/src/mod_auth_cas ./configure
 
 - name: Make mod_auth_cas directory
-  shell: make
+  shell: chdir=/src/mod_auth_cas make
 
 - name: Install mod_auth_cas directory
-  shell: make install
+  shell: chdir=/src/mod_auth_cas make install

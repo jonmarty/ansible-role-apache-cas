@@ -1,2 +1,2 @@
 dependencies:
-        role: geerlingguy.apache
+        - role: geerlingguy.apache
